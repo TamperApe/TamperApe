@@ -1,0 +1,15 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/*.log": true,
+        "**/*.lock": true,
+        "**/*lock.json": true,
+        ".gitignore": true,
+        "src/userscripts/ssgdfmApiWay.js": true,
+    },
+    "git.ignoreLimitWarning": true
+}

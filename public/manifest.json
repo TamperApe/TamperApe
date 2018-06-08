@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+    "name": "TamperApe",
+    "description": "篡改猿",
+    "version": "0.0.1",
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "all_frames": false,
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "jquery.js",
+                "content_document_start.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "browser_action": {
+        "default_icon": "favicon.ico",
+        "default_title": ""
+    },
+    "permissions": [
+        "tabs",
+        "<all_urls>",
+        "cookies",
+        "webRequestBlocking",
+        "webRequest",
+        "browsingData",
+        "storage",
+        "unlimitedStorage",
+        "alarms"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "icons": {
+        "128": "favicon.ico"
+    },
+    "options_page": "index.html"
+}

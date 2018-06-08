@@ -1,0 +1,32 @@
+{
+  "name": "TamperApe",
+  "version": "0.1.0",
+  "homepage": ".",
+  "private": true,
+  "dependencies": {
+    "@types/chrome": "^0.0.63",
+    "@types/node": "^9.6.1",
+    "antd": "^3.5.2",
+    "dotenv": "^5.0.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.4",
+    "uuid": "^3.2.1"
+  },
+  "scripts": {
+    "start": "set REACT_APP_platform=node && react-app-rewired start",
+    "build": "react-app-rewired build",
+    "watch": "node scripts/watch.js",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.7",
+    "copy-webpack-plugin": "^4.5.1",
+    "raw-loader": "^0.5.1",
+    "react-app-rewired": "^1.5.0"
+  }
+}
