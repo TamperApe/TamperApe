@@ -79,6 +79,31 @@ new class config {
                 value: '',
                 type: 'date',
                 tapKey: 0
+            }, {
+                desc: '列表',
+                key: 'test11',
+                value: [],
+                type: 'table',
+                tapKey: 1,
+                columns: [
+                    {
+                        title: 'columns1',
+                        key: 'columns1',
+                        linkText: "columns1",
+                        type: 'link',
+                        width: 150
+                    },
+                    {
+                        title: 'columns2',
+                        key: 'columns2',
+                        type: 'InputNumber',
+                        width: 150
+                    },
+                    {
+                        title: 'columns3',
+                        key: 'columns3',
+                        type: "date"
+                    }]
             }
         ];
     }

@@ -8,6 +8,7 @@ import { Text } from './Text';
 import { Toggle } from './Toggle';
 import { Date } from './Date';
 import { Number } from './Number';
+import { Tb } from './Tb';
 const Storager = require('../../lib/Storager');
 
 
@@ -18,7 +19,7 @@ export class ConfigItem extends Component {
         this.state = {
             configs: [],
             scriptName: props.scriptName,
-            key: 0
+            key: "0"
         }
     }
 
@@ -46,65 +47,41 @@ export class ConfigItem extends Component {
             updateConfig(config);
         }
 
-        // this.setState({
-        //     configs: configs
-        // });
-
-        // console.log(this.state.configs);
         key = `${this.state.scriptName}.${key}`;
         await Storager.setStorage(key, config.value);
     }
 
-    toggleChanged = async (sender, checked) => {
-        // console.log("toggle");
+    commonDataChanged = async (sender, data) => {
         function updateConfig(config) {
-            config.value = !config.value;
+            config.value = data;
         }
 
         this.saveData(sender.props.config.key, updateConfig);
     }
 
-    dateChanged = async (sender, date) => {
-        function updateConfig(config) {
-            config.value = date;
-        }
-
-        this.saveData(sender.props.config.key, updateConfig);
-    }
-
-    onTextChanged = async (sender, value) => {
-        function updateConfig(config) {
-            config.value = value;
-        }
-        console.log('textchanged', value);
-        this.saveData(sender.props.config.key, updateConfig);
-    }
     section(item, parentIndex) {
-        // console.log('section', item, parentIndex);
         let key = `${item.key}${this.state.key}`;
-        console.log(key);
         switch (item.type) {
             case 'label':
-                console.log("11");
                 return <Label key={key} config={item} />;
             case 'text':
-                return <Text key={key} config={item} onChange={this.onTextChanged} />;
+                return <Text key={key} config={item} onChange={this.commonDataChanged} />;
             case 'number':
-                return <Number key={key} config={item} onChange={this.onTextChanged} />;
+                return <Number key={key} config={item} onChange={this.commonDataChanged} />;
             case 'password':
-                return <Text key={key} type='password' config={item} onChange={this.onTextChanged} />;
+                return <Text key={key} type='password' config={item} onChange={this.commonDataChanged} />;
             case 'date':
-                return <Date key={key} config={item} onChange={this.dateChanged} />;
+                return <Date key={key} config={item} onChange={this.commonDataChanged} />;
             case 'toggle':
-                return <Toggle key={key} onChange={this.toggleChanged} config={item} />;
+                return <Toggle key={key} onChange={this.commonDataChanged} config={item} />;
+            case "table":
+                return <Tb key={key} onChange={this.commonDataChanged} config={item} />;
         }
     }
 
     render() {
         return (
             this.state.configs.map((item, index) => {
-                // return <Text key={item.key} config={item} />;
-
                 return <div key={item.key}>
                     <Row type="flex" justify="start">
                         <Col span={3}>
@@ -117,10 +94,9 @@ export class ConfigItem extends Component {
                                 :
                     </span>
                         </Col>
-                        <Col span={10}>
+                        <Col span={20}>
                             <span>
                                 {this.section(item, index)}
-                                {/* {this.state.config.value} */}
                             </span>
                         </Col>
                     </Row>
