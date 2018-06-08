@@ -37,6 +37,8 @@ new class test {
     }
 }()
 ```
+## 文档： 
+* **[API定义](https://github.com/TamperApe/TamperApe/blob/master/src/userscripts/api.js)**
 
 
 ## 目前的不足：
