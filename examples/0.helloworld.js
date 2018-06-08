@@ -1,9 +1,9 @@
 /*global
 
  */
-new class test {
+new class helloworld {
     constructor() {
-        this.name = 'test';
+        this.name = 'helloworld';
         this.version = '1.0';
         this.run_at = ["document_start", "document_domloaded"];
         this.includes = ['.*://.*baidu.*'];
@@ -12,7 +12,7 @@ new class test {
     get_Script() {
         return function () {
             function test(type) {
-                alert(type);
+                alert('hello ' + type);
             }
         }
     }
