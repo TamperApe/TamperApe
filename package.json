@@ -17,11 +17,7 @@
     "uuid": "^3.2.1"
   },
   "scripts": {
-    "start": "set REACT_APP_platform=node && react-app-rewired start",
-    "build": "react-app-rewired build",
-    "watch": "node scripts/watch.js",
-    "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-scripts eject"
+    "watch": "node scripts/watch.js"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.7",
