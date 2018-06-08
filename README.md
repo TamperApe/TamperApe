@@ -61,9 +61,9 @@ new class test {
 ```
 
 ## 插件部署:
-* npm/yarn watch 生成buld文件夹
+* npm/yarn watch 生成build文件夹
 * 把build文件夹拖到Chrome浏览器中
 
 
  ## 技术交流qq群：
- * 全栈开发qq群，不限开发制语言 191034956
+ * 全栈开发qq群，不限制开发语言 191034956
