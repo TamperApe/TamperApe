@@ -5,7 +5,6 @@
 
 // import ssgdfmCommon from '../userscripts/ssgdfmCommon.js';
 // import ssgdfmApiWay from '../userscripts/ssgdfmApiWay.js';
-import ssgdfm from '../userscripts/ssgdfm.js';
 import api from '../userscripts/api.js';
 import ScriptsManager from './ScriptsManager';
 const Storager = require('./Storager');

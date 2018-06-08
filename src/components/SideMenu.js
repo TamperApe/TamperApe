@@ -22,12 +22,12 @@ class SideMenu extends Component {
                                 <span>设置</span>
                             </Link>
                         </Menu.Item> */}
-                        <Menu.Item key="/TaskList">
+                        {/* <Menu.Item key="/TaskList">
                             <Link to="/TaskList">
                                 <Icon type="shopping-cart" />
                                 <span>购物列表</span>
                             </Link>
-                        </Menu.Item>
+                        </Menu.Item> */}
                         <Menu.Item key="/ScriptList">
                             <Link to="/ScriptList">
                                 <Icon type="folder" />
