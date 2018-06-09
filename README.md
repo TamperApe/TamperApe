@@ -37,9 +37,11 @@ new class test {
     }
 }()
 ```
+## 示例源码： 
+* **[源码](https://github.com/TamperApe/TamperApe/tree/master/examples)**
+
 ## 文档： 
 * **[API定义](https://github.com/TamperApe/TamperApe/blob/master/src/userscripts/api.js)**
-
 
 ## 目前的不足：
 * **浏览器支持**： 目前只支持Chrome，后续可能或支持其他浏览器。主要还是看各个浏览器对新语法的支持程度。
