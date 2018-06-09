@@ -84,17 +84,17 @@ export class ConfigItem extends Component {
             this.state.configs.map((item, index) => {
                 return <div key={item.key}>
                     <Row type="flex" justify="start">
-                        <Col span={3}>
+                        <Col span={item.wd_column0 !== undefined ? item.wd_column0 : 3}>
                             <span>
                                 {item.desc}
                             </span>
                         </Col>
-                        <Col span={1}>
+                        <Col span={item.wd_column0 === undefined || item.wd_column0 > 0 ? 1 : 0}>
                             <span>
                                 :
                     </span>
                         </Col>
-                        <Col span={20}>
+                        <Col span={item.wd_column1 !== undefined ? item.wd_column1 : 20}>
                             <span>
                                 {this.section(item, index)}
                             </span>

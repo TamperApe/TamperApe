@@ -11,5 +11,6 @@
         ".gitignore": true,
         "src/userscripts/ssgdfmApiWay.js": true,
     },
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "search.followSymlinks": false
 }
