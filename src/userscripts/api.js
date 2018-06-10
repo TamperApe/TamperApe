@@ -1,5 +1,6 @@
 /*global
  chrome
+ currentApeScript
  */
 
 String.prototype.replaceAll = function (search, replacement) {
@@ -57,6 +58,10 @@ function ape_restoreAlter(sourceAlter) {
     window.alert = sourceAlter;
 }
 
+async function ape_getScriptValue(key, returnObject, defaultValue) {
+    await this.ape_getValue(currentApeScript.name + "." + key, returnObject, defaultValue);
+}
+
 async function ape_getValue(key, returnObject, defaultValue) {
     // alert(key);
     return new Promise((resolve, reject) => {
@@ -71,6 +76,10 @@ async function ape_getValue(key, returnObject, defaultValue) {
         window.addEventListener("message", callBack);
         window.postMessage({ type: "api", method: "ape_getValue", key: key, returnObject: returnObject, defaultValue: defaultValue }, "*");
     });
+}
+
+async function ape_setScriptValue(key,value) {
+    await this.ape_setValue(currentApeScript.name + "." + key,value);
 }
 
 async function ape_setValue(key, value) {

@@ -123,6 +123,13 @@ class UserscriptManager {
             // let script = uscriptItem.get_Script(type);
             if (type == "document_start") {
                 //只插入一次用户脚本，后面通过 run_Script type调用不同的事件
+                let currentScript = JSON.stringify(
+                    {
+                        name: uscriptItem.name,
+                        id: uscriptItem.id
+                    });
+                //插入当前执行脚本的配置
+                this.injectScript(`currentApeScript=${currentScript}`);
                 this.injectScript(api);
                 script = this.getFunctionBody(script);
                 this.injectScript(script, false);
