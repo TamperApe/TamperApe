@@ -19,7 +19,15 @@ const Home = () => (
 
 const About = () => (
   <div>
-    <h2>About</h2>
+    <p>
+      <a target="_blank" href="https://github.com/TamperApe/TamperApe">Github</a>
+    </p>
+    <p>
+      <a target="_blank" href="https://github.com/TamperApe/TamperApe/blob/master/src/userscripts/api.js">API定义</a>
+    </p>
+    <p>
+      <a target="_blank" href="https://github.com/TamperApe/TamperApe/tree/master/examples">样例</a>
+    </p>
   </div>
 );
 

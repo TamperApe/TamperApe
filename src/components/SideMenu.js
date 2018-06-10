@@ -34,12 +34,12 @@ class SideMenu extends Component {
                                 <span>脚本管理</span>
                             </Link>
                         </Menu.Item>
-                        {/* <Menu.Item key="/About">
+                        <Menu.Item key="/About">
                             <Link to="/About">
-                                <Icon type="video-camera" />
-                                <span>代理</span>
+                                <Icon type="exclamation-circle-o" />
+                                <span>关于</span>
                             </Link>
-                        </Menu.Item> */}
+                        </Menu.Item>
                         {/* <SubMenu
                             key="sub1"
                             title={<span><Icon type="user" /><span>User</span></span>}
