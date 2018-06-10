@@ -59,7 +59,7 @@ function ape_restoreAlter(sourceAlter) {
 }
 
 async function ape_getScriptValue(key, returnObject, defaultValue) {
-    await this.ape_getValue(currentApeScript.name + "." + key, returnObject, defaultValue);
+    return await this.ape_getValue(currentApeScript.name + "." + key, returnObject, defaultValue);
 }
 
 async function ape_getValue(key, returnObject, defaultValue) {
@@ -78,8 +78,8 @@ async function ape_getValue(key, returnObject, defaultValue) {
     });
 }
 
-async function ape_setScriptValue(key,value) {
-    await this.ape_setValue(currentApeScript.name + "." + key,value);
+async function ape_setScriptValue(key, value) {
+    await this.ape_setValue(currentApeScript.name + "." + key, value);
 }
 
 async function ape_setValue(key, value) {
