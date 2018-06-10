@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import ReactDom from 'react-dom';
 import { Table, DatePicker, InputNumber, Switch } from 'antd';
-import './TaskList.css';
 import { EditableCell } from './EditableCell'
 import moment from 'moment';
 import ScriptsManager from '../lib/ScriptsManager';

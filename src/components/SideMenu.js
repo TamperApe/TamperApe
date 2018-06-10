@@ -15,19 +15,13 @@ class SideMenu extends Component {
                 collapsed={this.props.collapsed}>
                 <div className="logo" >Tamper Ape</div>
                 <Router>
-                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['/TaskList']} selectedKeys={[location.pathname]}>
+                    <Menu theme="dark" mode="inline" defaultSelectedKeys={['/ScriptList']} selectedKeys={[location.pathname]}>
                         {/* <Menu.Item key="/Setting">
                             <Link to="/Setting">
                                 <Icon type="setting" />
                                 <span>设置</span>
                             </Link>
-                        </Menu.Item> */}
-                        {/* <Menu.Item key="/TaskList">
-                            <Link to="/TaskList">
-                                <Icon type="shopping-cart" />
-                                <span>购物列表</span>
-                            </Link>
-                        </Menu.Item> */}
+                        </Menu.Item> */}                       
                         <Menu.Item key="/ScriptList">
                             <Link to="/ScriptList">
                                 <Icon type="folder" />

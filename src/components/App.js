@@ -4,7 +4,6 @@ import './App.css';
 import { Layout, Icon } from 'antd';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import SideMenu from './SideMenu';
-import { TaskList } from './TaskList';
 import { Setting } from './Setting';
 import { ScriptList } from './ScriptList';
 import { ScriptInfo } from './ScriptInfo';
@@ -88,7 +87,6 @@ class App extends Component {
               <Switch>
                 <Route exact={true} path="/" render={() => <Redirect to="/ScriptList" />} />
                 <Route path="/Setting" render={() => <Setting />} />
-                <Route path="/TaskList" render={() => <TaskList height={this.state.contentHeight} />} />
                 <Route path="/ScriptList" render={() => <ScriptList height={this.state.contentHeight} />} />
                 <Route path="/About" render={() => <About />} />
                 <Route path="/ScriptInfo/:name" render={(props) => <ScriptInfo  {...props} />} />

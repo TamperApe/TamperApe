@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Button, Row, Col, Tabs, Table, DatePicker, InputNumber } from 'antd';
-import './TaskList.css';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import { EditableCell } from './EditableCell'
 import moment from 'moment';
