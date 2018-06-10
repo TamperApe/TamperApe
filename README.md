@@ -57,13 +57,13 @@ new class test {
 
 ##  编译方式：
 ```
- npm install & npm watch
+ npm install & npm run watch
  或者
  yarn install & yarn watch
 ```
 
 ## 插件部署:
-* npm/yarn watch 生成build文件夹
+* npm run watch 或 yarn watch 生成build文件夹
 * 把build文件夹拖到Chrome浏览器中
 
 
