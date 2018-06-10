@@ -25,37 +25,12 @@ export class Tb extends React.Component {
         });
 
         this.columns = tempColus;
-        return;
-        this.columns = [{
-            title: '网址',
-            dataIndex: 'uri',
-            render: text => <a href={text} target='_blank'>网址</a>,
-            width: 150
-        },
-        {
-            title: '需购数量',
-            dataIndex: 'buyCount',
-            render: (text, record) => (
-                <InputNumber
-                    value={text}
-                    onChange={this.onCellChange(record.uri, 'buyCount')}
-                />
-            ),
-            width: 150
-        }, {
-            title: '最后航班时间',
-            dataIndex: 'lasBuyTime',
-            key: 'lasBuyTime',
-            render: (text, record) => <DatePicker
-                onChange={this.onCellChange(record.uri, 'lasBuyTime')}
-                value={text ? moment(text) : null} />,
-        }];
     }
 
     renderItem(text, config) {
         switch (config.type) {
             case "link":
-                return <a href={text} target='_blank'>config.linkText</a>;
+                return <a href={text} target='_blank'>{config.linkText}</a>;
         }
     }
 
@@ -84,6 +59,7 @@ export class Tb extends React.Component {
     }
     readFile(evt) {
         const data = this.state.data;
+        const config = this.props.config;
         var file = evt.target.files[0];
         if (file) {
             var reader = new FileReader();
@@ -92,8 +68,17 @@ export class Tb extends React.Component {
                 //用Set取出重复
                 var array = contents.split("\r\n").filter(item => item !== "" && item !== undefined);
                 array = [...(new Set(array))];
-                var newData = array.map(function (item) {
-                    return { uri: item, buyCount: 50, lasBuyTime: null };
+                var newData = array.map(function (text) {
+                    let result = {};
+                    for (const columnItem of config.columns) {
+                        result[columnItem.key] = columnItem.defaultValue;
+
+                        if (columnItem.key === config.importToKey)
+                            result[columnItem.key] = text;
+                    }
+
+                    console.log("test");
+                    return result;
                 });
                 this.setState({
                     data: newData
