@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Table, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
 const Storager = require('../../lib/Storager');
+const uuidv5 = require('uuid/v5');
 
 export class Tb extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export class Tb extends React.Component {
             return {
                 title: x.title,
                 dataIndex: x.key,
-                render: text => this.renderItem(text, x),
+                render: (text, record) => this.renderItem(text, record, x),
                 width: x.width
             }
         });
@@ -27,10 +28,19 @@ export class Tb extends React.Component {
         this.columns = tempColus;
     }
 
-    renderItem(text, config) {
-        switch (config.type) {
+    renderItem(text, record, column) {
+        switch (column.type) {
             case "link":
-                return <a href={text} target='_blank'>{config.linkText}</a>;
+                return <a href={text} target='_blank'>{column.linkText}</a>;
+            case "InputNumber":
+                return <InputNumber
+                    value={text}
+                    onChange={this.onCellChange(record.id, column.key)}
+                />
+            case "date":
+                return <DatePicker
+                    onChange={this.onCellChange(record.id, column.key)}
+                    value={text ? moment(text) : null} />;
         }
     }
 
@@ -44,10 +54,10 @@ export class Tb extends React.Component {
         });
     }
 
-    onCellChange(uri, dataIndex) {
+    onCellChange(id, dataIndex) {
         return async (value) => {
             const dataSource = [...this.state.data];
-            const target = dataSource.find(item => item.uri === uri);
+            const target = dataSource.find(item => item.id === id);
             if (target) {
                 target[dataIndex] = value;
                 this.setState({ dataSource });
@@ -72,7 +82,7 @@ export class Tb extends React.Component {
                     let result = {};
                     for (const columnItem of config.columns) {
                         result[columnItem.key] = columnItem.defaultValue;
-
+                        result.id = uuidv5(Date.now().toString(), uuidv5.DNS);
                         if (columnItem.key === config.importToKey)
                             result[columnItem.key] = text;
                     }
