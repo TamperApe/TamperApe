@@ -202,10 +202,16 @@ class UserscriptManager {
 
     //获取当前url匹配的脚本
     getUrlMatchedScript() {
+        var topframe = window.self == window.top;
+        console.log("topframe", topframe);
+
         console.log("getUrlMatchedScript");
         let currentUrl = window.location.toString();
         var result = this.userScript.filter(uscriptItem => {
             let matched = false;
+
+            if (!topframe && uscriptItem.onlyTopFrame)
+                return false;
 
             //检查url是否匹配
             for (var urlIndex = 0; urlIndex < uscriptItem.includes.length; urlIndex++) {
