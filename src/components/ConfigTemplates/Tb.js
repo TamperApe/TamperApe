@@ -3,9 +3,12 @@ import { Table, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
 const Storager = require('../../lib/Storager');
 const uuidv5 = require('uuid/v5');
+import Common from '../../lib/Common';
+
 
 export class Tb extends React.Component {
     constructor(props) {
+        Common.Init();
         super(props);
         //初始化state
         this.state = {
@@ -29,9 +32,16 @@ export class Tb extends React.Component {
     }
 
     renderItem(text, record, column) {
+        let url = text;
+        if (column.urlFormat) {
+            var template = (value) => eval("\`" + column.urlFormat + "\`");
+            url = template(text);
+        }
         switch (column.type) {
+            case "text":
+                return <span>{text}</span>;
             case "link":
-                return <a href={text} target='_blank'>{column.linkText}</a>;
+                return <a href={url} target='_blank'>{column.linkText || text}</a>;
             case "InputNumber":
                 return <InputNumber
                     value={text}
@@ -83,8 +93,11 @@ export class Tb extends React.Component {
                     for (const columnItem of config.columns) {
                         result[columnItem.key] = columnItem.defaultValue;
                         result.id = uuidv5(Date.now().toString(), uuidv5.DNS);
-                        if (columnItem.key === config.importToKey)
+                        if (columnItem.key === config.importToKey) {
+                            if (config.removeWhenImport)
+                                text = text.replaceAll(config.removeWhenImport, "");
                             result[columnItem.key] = text;
+                        }
                     }
 
                     console.log("test");

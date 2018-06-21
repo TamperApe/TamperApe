@@ -18,9 +18,9 @@ var ScriptsManager = {
         data.sourceCode = str;
         data.id = uuidv5(Date.now().toString(), uuidv5.DNS);
         data.enabled = true;
-        list.push(data);
+        // list.push(data);
+        list.splice(0, 0, data);
 
-      
         let tempScript = eval(str);
         let initConfigs = tempScript.configs;
         for (const itemSetting of initConfigs) {
