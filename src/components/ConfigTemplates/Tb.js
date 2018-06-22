@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Table, DatePicker, InputNumber } from 'antd';
 import moment from 'moment';
+import Common from '../../lib/Common';
+
 const Storager = require('../../lib/Storager');
 const uuidv5 = require('uuid/v5');
-import Common from '../../lib/Common';
 
 
 export class Tb extends React.Component {
