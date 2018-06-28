@@ -42,7 +42,7 @@ new class test {
 
 ## 文档： 
 
-* **[文档](https://github.com/TamperApe/TamperApe/blob/master/doc/zh-cn/)**
+* **[文档](https://github.com/TamperApe/TamperApe/blob/master/doc/zh-cn/index.md)**
 
 
 ## 目前的不足：
