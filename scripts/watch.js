@@ -37,17 +37,7 @@ htmlWebpackPlugin.options.chunks = ['app'];
 config.output.path = paths.appBuild;
 config.output.publicPath = paths.servedPath;
 config.output.filename = '[name].js';
-// //添加插件拷贝chrome需要的文件
-// config.plugins.push((
-//     new CopyWebpackPlugin(
-//         [{
-//             from: 'src/platform/chrome/*',
-//             //不拷贝文件夹
-//             flatten: true,
-//         }]
-//         , { debug: 'debug' }
-//     )
-// ));
+
 //antd动态样式加载
 config = injectBabelPlugin(
     ['import',
@@ -57,9 +47,7 @@ config = injectBabelPlugin(
             style: 'css'
         }
     ], config);
-//paths.publicUrl = paths.appBuild + '/';
 
-// removes react-dev-utils/webpackHotDevClient.js at first in the array
 config.entry.shift();
 //添加入口文件
 config.entry =
@@ -67,8 +55,6 @@ config.entry =
         app: resolveApp(paths.appIndexJs),
         background: resolveApp('src/platform/chrome/background.js'),
         content_document_start: resolveApp('src/platform/chrome/content_document_start.js'),
-        // content_document_idle: resolveApp('src/platform/chrome/content_document_idle.js'),
-        // content_document_end: resolveApp('src/platform/chrome/content_document_end.js'),
     };
 
 
