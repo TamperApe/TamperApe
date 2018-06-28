@@ -1,10 +1,7 @@
-// const ssgdfm = require('../userscripts/ssgdfm');
 /*global
  chrome
  */
 
-// import ssgdfmCommon from '../userscripts/ssgdfmCommon.js';
-// import ssgdfmApiWay from '../userscripts/ssgdfmApiWay.js';
 import api from '../userscripts/api.js';
 import ScriptsManager from './ScriptsManager';
 const Storager = require('./Storager');
@@ -21,29 +18,16 @@ class UserscriptManager {
     async init() {
         if (this.initialized)
             return;
-        // this.injectScript(ssgdfmCommon);
-        // this.userScript = [
-        //     eval(ssgdfm),
-        //     // ...eval(ssgdfmApiWay),
-        // ];
+   
         await this.loadScripts();
-        // for (const userScriptItem of this.userScript) {
-        //     userScriptItem.ape_getValue = async () => {
-        //         alert('test');
-        //     }
-        // }
-
+      
         this.regMsgEvent();
         this.initialized = true;
     }
 
     async loadScripts() {
-        console.log("loadScripts1");
         this.userScript = await ScriptsManager.getScriptList();
         this.urlMatchedScripts = this.getUrlMatchedScript();
-
-        console.log("loadScripts2", this.userScript);
-        console.log("loadScripts3", this.urlMatchedScripts);
     }
 
     regMsgEvent() {
@@ -64,7 +48,6 @@ class UserscriptManager {
                         result = await Storager.setStorage(event.data.key, event.data.value);
                         break;
                     case "ape_removeCookie":
-                        // result = await Cookie.remove(event.data.url, event.data.name);
                         result = await ChromeMessager.sendMessage(event.data.method, {
                             url: event.data.url,
                             name: event.data.name
@@ -82,18 +65,6 @@ class UserscriptManager {
             }
         }, false);
     }
-    //api 定义开始
-    // async ape_getValue(name, returnObj, defaultValue) {
-    //     // return new Promise((resolve, reject) => {
-    //     alert("GM" + name);
-    //     document.dispatchEvent(new CustomEvent('RW759_connectExtension', {
-    //         detail: name // Some variable from Gmail.
-    //     }));
-    //     // var result = await Storager.getStorage(name, returnObj, defaultValue)
-    //     // return result;
-    //     // resolve();
-    //     // })
-    // }
 
     injectScript(func, wrap, para) {
         console.log("injectScript");
@@ -101,26 +72,19 @@ class UserscriptManager {
         if (para === undefined)
             para = '';
         if (wrap)
-            // actualCode = '(' + func + ')(' + para + ');'
             actualCode = `(${func})('${para}');`
-        //alert(actualCode);
         var script = document.createElement('script');
         script.textContent = actualCode;
-        //  alert('s  ' + actualCode);
-        // (document.head || document.documentElement).appendChild(script);
         (document.head || document.documentElement).appendChild(script);
-        // script.remove();
     }
     async resolve(type) {
         //注入函数
         console.log("resolve ", type)
-        // this.injectScript(this.ape_getValue);
         for (const uscriptItem of this.urlMatchedScripts) {
             let temp = eval(uscriptItem.sourceCode);
             let script = temp.get_Script();
             if (!script)
                 continue;
-            // let script = uscriptItem.get_Script(type);
             if (type == "document_start") {
                 //只插入一次用户脚本，后面通过 run_Script type调用不同的事件
                 let currentScript = JSON.stringify(
@@ -137,7 +101,6 @@ class UserscriptManager {
             if (!this.RunAtMatched(temp, type))
                 continue;
 
-            // console.log("test");
             if (!uscriptItem.enabled)
                 continue;
             let run_Script = temp.run_Script(type);
@@ -147,21 +110,6 @@ class UserscriptManager {
                 ${tempScript}
             }`;
             this.injectScript(run_Script, true, type);
-            // let commonScript = uscriptItem.get_CommonScript();
-            // if (commonScript) {
-            //     // console(commonScript);
-            //     // this.injectScript(commonScript);
-            //     let tempCommon = this.getFunctionBody(commonScript);
-            //     let tempScript = this.getFunctionBody(script);
-            //     // script = tempCommon + "\n" + getFunctionBody(script);
-
-            //     script = `async function(){
-            //         ${tempCommon}
-
-            //         ${tempScript}
-            //     }`;
-            // }
-
         }
     }
     getFunctionBody(func) {
@@ -223,9 +171,6 @@ class UserscriptManager {
             }
 
             if (matched) {
-                //注入函数
-                // uscriptItem.script.ape_getValue = this.ape_getValue;
-
                 return true;
             }
             return false;
@@ -251,11 +196,4 @@ class UserscriptManager {
     }
 };
 UserscriptManager.Singleton = new UserscriptManager();
-// export let userscriptManager = new UserscriptManager();
 export { UserscriptManager };
-
-// var static userscriptManager = new UserscriptManager();
-// export static function Instance() {
-//     let userscriptManager = new UserscriptManager();
-//     return;
-// }
