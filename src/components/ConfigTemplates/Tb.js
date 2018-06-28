@@ -43,6 +43,7 @@ export class Tb extends React.Component {
                 return <span>{text}</span>;
             case "link":
                 return <a href={url} target='_blank'>{column.linkText || text}</a>;
+            case "inputNumber":
             case "InputNumber":
                 return <InputNumber
                     value={text}
