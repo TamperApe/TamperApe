@@ -9,7 +9,10 @@
 * **ape_getCookiesArray**：
 * **ape_regAlertCallback**：
 * **ape_restoreAlter**：
-* **ape_getScriptValue**：
+* **ape_getScriptValue**：获取脚本配置
+    * key：标识
+    * returnObject：（选填）bool是否返回obj
+    * defaultValue：（选填）默认值
 * **ape_getValue**：
 * **ape_setScriptValue**：
 * **ape_setValue**：

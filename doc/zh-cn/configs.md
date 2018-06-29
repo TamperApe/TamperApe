@@ -67,7 +67,7 @@
                     },{
                         title: '参数2',
                         key: 'para2',
-                        type: 'InputNumber',
+                        type: 'inputNumber',
                         defaultValue: 50,
                         width: 150
                     }]
