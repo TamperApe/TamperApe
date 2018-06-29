@@ -151,10 +151,11 @@ function ape_delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function ape_executeAsync(fun, timeOutSeconds) {
+async function ape_executeAsync(fun, ms) {
     let timeNow = new Date();
     let endTime = new Date();
-    endTime.setSeconds(endTime.getSeconds() + timeOutSeconds);
+    // endTime.setSeconds(endTime.getSeconds() + ms);
+    endTime.setMilliseconds(endTime.getMilliseconds() + ms);
     while (timeNow < endTime) {
         let isOk = fun();
         if (isOk)
@@ -164,4 +165,11 @@ async function ape_executeAsync(fun, timeOutSeconds) {
     }
 
     return false;
+}
+
+async function ape_wait(selectors, ms) {
+    await ape_executeAsync(() => {
+        let temp = document.querySelectorAll(selectors)
+        return temp !== "" && temp !== undefined && temp.length > 0;
+    }, ms)
 }

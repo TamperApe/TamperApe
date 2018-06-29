@@ -19,5 +19,11 @@
 * **ape_browser_tabs_update**：
 * **ape_browser_tabs_reload**：
 * **ape_browser_alarm_create**：
-* **ape_delay**：
-* **ape_executeAsync**：
+* **ape_delay**：延迟等待
+    * ms：等待毫秒
+* **ape_executeAsync**：异步执行一个函数，返回True停止
+    * fun：执行函数，停止执行返回True
+    * timeOutSeconds：超时时间
+* **ape_wait**：等待指定选择器查询的内容出现
+    * selectors：选择器
+    * timeout ：超时时间，单位毫秒
