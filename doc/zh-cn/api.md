@@ -15,6 +15,8 @@
     * defaultValue：（选填）默认值
 * **ape_getValue**：
 * **ape_setScriptValue**：
+    * key
+    * value
 * **ape_setValue**：
 * **ape_removeCookie**：
 * **ape_callContainerApi**：
