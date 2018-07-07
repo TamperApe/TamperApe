@@ -32,3 +32,4 @@
 * **ape_wait**：等待指定选择器查询的内容出现
     * selectors：选择器
     * timeout ：超时时间，单位毫秒
+    * ```await ape_wait(".className #id", 60 * 1000);```
