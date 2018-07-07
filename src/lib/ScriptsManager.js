@@ -23,15 +23,15 @@ var ScriptsManager = {
 
         let tempScript = eval(str);
         let initConfigs = tempScript.configs;
-        for (const itemSetting of initConfigs) {
-            let key = `${tempScript.name}.${itemSetting.key}`;
-            let existConfig = await Storager.getStorage(key);
-            if (existConfig !== undefined)
-                continue;
+        if (initConfigs)
+            for (const itemSetting of initConfigs) {
+                let key = `${tempScript.name}.${itemSetting.key}`;
+                let existConfig = await Storager.getStorage(key);
+                if (existConfig !== undefined)
+                    continue;
 
-            await Storager.setStorage(key, itemSetting.value);
-
-        }
+                await Storager.setStorage(key, itemSetting.value);
+            }
 
         await Storager.setStorage("ScriptSourceList", list);
     },
