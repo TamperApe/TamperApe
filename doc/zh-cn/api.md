@@ -33,3 +33,7 @@
     * selectors：选择器
     * timeout ：超时时间，单位毫秒
     * ```await ape_wait(".className #id", 60 * 1000);```
+* **ape_waitVanish**：等待指定选择器查询的内容消失
+    * selectors：选择器
+    * timeout ：超时时间，单位毫秒
+    * ```await ape_wait(".className #id", 60 * 1000);```

@@ -173,3 +173,10 @@ async function ape_wait(selectors, ms) {
         return temp !== "" && temp !== undefined && temp.length > 0;
     }, ms)
 }
+
+async function ape_waitVanish(selectors, ms) {
+    await ape_executeAsync(() => {
+        let temp = document.querySelectorAll(selectors)
+        return temp === "" || temp === undefined || temp.length == 0 || temp[0].offsetParent == undefined || temp[0].offsetParent == null;
+    }, ms)
+}
